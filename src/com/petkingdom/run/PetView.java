@@ -18,7 +18,7 @@ public class PetView {
                     |1. Thêm mới thú cưng        |
                     |2. Hiển thị danh sách       |
                     |3. Tìm kiếm                 |
-                    |4. Xoá                      |
+                    |4. Bán                      |
                     |5. Thoát                    |
                     +----------------------------+
                     """);
@@ -51,7 +51,7 @@ public class PetView {
         String id;
         String name;
         String type;
-        String ownerId;
+//        nhập pet id và kiểm tra hợp lệ
         do {
             System.out.print("Nhập id : ");
             id = InputValidate.getString(sc);
@@ -60,6 +60,7 @@ public class PetView {
             }
 
         }while(id == null);
+//        nhập pet name và kiểm tra hợp lệ
         do {
             System.out.print("Nhập tên : ");
             name = InputValidate.getString(sc);
@@ -68,6 +69,7 @@ public class PetView {
             }
 
         }while(name == null);
+//        nhập pet type và kiểm tra hợp lệ
         do {
             System.out.print("Nhập loài : ");
             type = InputValidate.getString(sc);
@@ -76,7 +78,8 @@ public class PetView {
             }
         }while(type == null);
 
-        if(!Main.petManagement.add(new Pet(id,name,type,null))){
+//        kiểm tra hợp lệ khi thêm dữ liệu
+        if(!Main.petManagement.add(new Pet(id,name,type))){
             System.out.println("Id đã tồn tại! Thêm thất bại!");
         }else{
             System.out.println("Thêm thành công!");
@@ -89,6 +92,7 @@ public class PetView {
 
     public static void findPet(Scanner sc) {
         String id;
+//        nhập pet id và kiểm tra hợp lệ
         do {
             System.out.print("Nhập id : ");
             id = InputValidate.getString(sc);
@@ -96,7 +100,7 @@ public class PetView {
                 System.out.println("Id không hợp lệ!Nhập lại!");
             }
         }while(id == null);
-
+//        Tìm pet thông báo nếu như tìm thấy và không tìm thấy
         Pet findPet = Main.petManagement.findById(id);
         if(findPet == null){
             System.out.println("Không tìm thấy thú cưng!");
@@ -112,6 +116,7 @@ public class PetView {
     public static void deletePet(Scanner sc) {
         String petId;
         String userId;
+//        nhập pet id và kiểm tra hợp lệ
         do {
             System.out.print("Nhập id thú cưng : ");
             petId = InputValidate.getString(sc);
@@ -125,7 +130,7 @@ public class PetView {
             System.out.println("Không tìm thấy thú cưng!");
             return;
         }
-
+//          Nhập user id và kiểm tra hợp lệ
         do {
             System.out.print("Nhập khách hàng : ");
             userId = InputValidate.getString(sc);
@@ -139,8 +144,9 @@ public class PetView {
             System.out.println("Khách hàng không tồn tại!");
             return;
         }
-
+//        pet sẽ thêm vào danh sách pet của khách hàng hiện có
         findClient.addPet(findPet);
+//        xoá pet khỏi kho
         if(Main.petManagement.delete(petId)){
             System.out.println("Bán thú cưng thành công!");
         }else{

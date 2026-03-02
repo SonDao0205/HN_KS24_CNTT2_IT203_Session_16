@@ -4,13 +4,11 @@ public class Pet {
     private String id;
     private String name;
     private String type;
-    private String owner;
 
-    public Pet(String id, String name, String type, String owner) {
+    public Pet(String id, String name, String type) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.owner = owner;
     }
 
     public String getId() {
@@ -35,14 +33,6 @@ public class Pet {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
     }
 
     @Override

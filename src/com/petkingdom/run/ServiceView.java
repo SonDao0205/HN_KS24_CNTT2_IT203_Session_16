@@ -39,6 +39,7 @@ public class ServiceView {
     }
 
     public static void serviceAdopted(Scanner sc) {
+//        Nhập user id và kiểm tra hợp lệ
         String userId;
         do {
             System.out.print("Nhập id khách hàng : ");
@@ -54,7 +55,7 @@ public class ServiceView {
             System.out.println("Không tìm thấy khách hàng!");
             return;
         }
-
+//        Nhập pet id và kiểm tra hợp lệ
         String petId;
         do {
             System.out.print("Nhập id thú cưng : ");
@@ -69,6 +70,7 @@ public class ServiceView {
             System.out.println("Không tìm thấy thú cưng!");
             return;
         }
+//        gọi hàm xử lý
         Main.serviceManagement.petAdoption(findPet);
     }
 
