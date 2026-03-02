@@ -87,10 +87,18 @@ public class PetView {
     }
 
     public static void displayAll() {
+        if(Main.petManagement.isEmpty()){
+            System.out.println("Kho rỗng!");
+            return;
+        }
         Main.petManagement.displayAll();
     }
 
     public static void findPet(Scanner sc) {
+        if(Main.petManagement.isEmpty()){
+            System.out.println("Kho rỗng!");
+            return;
+        }
         String id;
 //        nhập pet id và kiểm tra hợp lệ
         do {
@@ -114,6 +122,10 @@ public class PetView {
     }
 
     public static void deletePet(Scanner sc) {
+        if(Main.petManagement.isEmpty()){
+            System.out.println("Kho rỗng!");
+            return;
+        }
         String petId;
         String userId;
 //        nhập pet id và kiểm tra hợp lệ

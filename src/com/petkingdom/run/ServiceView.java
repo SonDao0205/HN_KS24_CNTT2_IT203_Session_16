@@ -35,7 +35,7 @@ public class ServiceView {
                     System.out.println("Lựa chọn không hợp lệ!");
                     break;
             }
-        }while(choice != 5);
+        }while(choice != 3);
     }
 
     public static void serviceAdopted(Scanner sc) {

@@ -10,6 +10,10 @@ import java.util.Set;
 public class ClientManagement{
     public static Set<Client> clients = new LinkedHashSet<>();
 
+    public static boolean isEmpty(){
+        return clients.isEmpty();
+    }
+
     public static boolean register(Client client) {
         return clients.add(client);
     }

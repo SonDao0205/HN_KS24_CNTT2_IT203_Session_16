@@ -71,6 +71,10 @@ public class ClientView {
     }
 
     public static void searchClient(Scanner sc){
+        if(ClientManagement.isEmpty()){
+            System.out.println("Danh sách khách hàng rỗng!");
+            return;
+        }
         String id;
         do {
             System.out.print("Nhập id : ");

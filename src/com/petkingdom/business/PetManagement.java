@@ -10,6 +10,9 @@ import java.util.List;
 public class PetManagement implements IManagement<Pet> {
     public static List<Pet> pets = new ArrayList<>();
 
+    public boolean isEmpty() {
+        return pets.isEmpty();
+    }
     @Override
     public boolean add(Pet item) {
         Pet findPet = findById(item.getId());
@@ -21,10 +24,6 @@ public class PetManagement implements IManagement<Pet> {
 
     @Override
     public void displayAll() {
-        if(pets.isEmpty()){
-            System.out.println("Kho rỗng!");
-            return;
-        }
         System.out.println("+----------------------+");
         System.out.printf("|%-5s|%-10s|%-5s|\n","ID","Name","Type");
         System.out.println("+----------------------+");
