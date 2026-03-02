@@ -21,6 +21,10 @@ public class PetManagement implements IManagement<Pet> {
 
     @Override
     public void displayAll() {
+        if(pets.isEmpty()){
+            System.out.println("Kho rỗng!");
+            return;
+        }
         System.out.println("+----------------------+");
         System.out.printf("|%-5s|%-10s|%-5s|\n","ID","Name","Type");
         System.out.println("+----------------------+");

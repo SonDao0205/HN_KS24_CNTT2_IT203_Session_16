@@ -105,11 +105,11 @@ public class PetView {
         if(findPet == null){
             System.out.println("Không tìm thấy thú cưng!");
         }else{
-            System.out.println("+----------------------------------+");
-            System.out.printf("|-5%s|-20%s|-10%s|\n","ID","Name","Type");
-            System.out.println("+----------------------------------+");
-            System.out.println(findPet.toString());
-            System.out.println("+----------------------------------+");
+            System.out.println("+----------------------+");
+            System.out.printf("|%-5s|%-10s|%-5s|\n","ID","Name","Type");
+            System.out.println("+----------------------+");
+            System.out.printf(findPet.toString());
+            System.out.println("+----------------------+");
         }
     }
 

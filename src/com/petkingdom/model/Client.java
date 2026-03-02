@@ -78,6 +78,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return String.format("|%-5s|%-15s|%-15s\n",this.id,this.name,this.phoneNumber);
+        return String.format("|%-5s|%-15s|%-15s|\n",this.id,this.name,this.phoneNumber);
     }
 }
