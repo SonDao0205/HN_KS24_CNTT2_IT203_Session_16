@@ -1,0 +1,150 @@
+package com.petkingdom.run;
+
+import com.petkingdom.business.ClientManagement;
+import com.petkingdom.business.PetManagement;
+import com.petkingdom.model.Client;
+import com.petkingdom.model.Pet;
+import com.petkingdom.validator.InputValidate;
+
+import javax.xml.validation.Validator;
+import java.util.Scanner;
+
+public class PetView {
+    public static void PetMenu(Scanner sc) {
+        int choice;
+        do {
+            System.out.println("""
+                    +------------MENU------------+
+                    |1. Thêm mới thú cưng        |
+                    |2. Hiển thị danh sách       |
+                    |3. Tìm kiếm                 |
+                    |4. Xoá                      |
+                    |5. Thoát                    |
+                    +----------------------------+
+                    """);
+            System.out.print("Lựa chọn : ");
+            choice = sc.nextInt();
+            sc.nextLine();
+            switch (choice) {
+                case 1:
+                    addPet(sc);
+                    break;
+                case 2:
+                    displayAll();
+                    break;
+                case 3:
+                    findPet(sc);
+                    break;
+                case 4:
+                    deletePet(sc);
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
+                    break;
+            }
+        }while(choice != 5);
+    }
+
+    public static void addPet(Scanner sc){
+        String id;
+        String name;
+        String type;
+        String ownerId;
+        do {
+            System.out.print("Nhập id : ");
+            id = InputValidate.getString(sc);
+            if(id == null){
+                System.out.println("Id không hợp lệ!Nhập lại!");
+            }
+
+        }while(id == null);
+        do {
+            System.out.print("Nhập tên : ");
+            name = InputValidate.getString(sc);
+            if(name == null){
+                System.out.println("Tên không hợp lệ!Nhập lại!");
+            }
+
+        }while(name == null);
+        do {
+            System.out.print("Nhập loài : ");
+            type = InputValidate.getString(sc);
+            if(type == null){
+                System.out.println("Loài không hợp lệ!Nhập lại!");
+            }
+        }while(type == null);
+
+        if(!Main.petManagement.add(new Pet(id,name,type,null))){
+            System.out.println("Id đã tồn tại! Thêm thất bại!");
+        }else{
+            System.out.println("Thêm thành công!");
+        }
+    }
+
+    public static void displayAll() {
+        Main.petManagement.displayAll();
+    }
+
+    public static void findPet(Scanner sc) {
+        String id;
+        do {
+            System.out.print("Nhập id : ");
+            id = InputValidate.getString(sc);
+            if(id == null){
+                System.out.println("Id không hợp lệ!Nhập lại!");
+            }
+        }while(id == null);
+
+        Pet findPet = Main.petManagement.findById(id);
+        if(findPet == null){
+            System.out.println("Không tìm thấy thú cưng!");
+        }else{
+            System.out.println("+----------------------------------+");
+            System.out.printf("|-5%s|-20%s|-10%s|\n","ID","Name","Type");
+            System.out.println("+----------------------------------+");
+            System.out.println(findPet.toString());
+            System.out.println("+----------------------------------+");
+        }
+    }
+
+    public static void deletePet(Scanner sc) {
+        String petId;
+        String userId;
+        do {
+            System.out.print("Nhập id thú cưng : ");
+            petId = InputValidate.getString(sc);
+            if(petId == null){
+                System.out.println("Id không hợp lệ!Nhập lại!");
+            }
+        }while(petId == null);
+
+        Pet findPet = Main.petManagement.findById(petId);
+        if(findPet == null){
+            System.out.println("Không tìm thấy thú cưng!");
+            return;
+        }
+
+        do {
+            System.out.print("Nhập khách hàng : ");
+            userId = InputValidate.getString(sc);
+            if(userId == null){
+                System.out.println("Id không hợp lệ!Nhập lại!");
+            }
+        }while(userId == null);
+
+        Client findClient = ClientManagement.findById(userId);
+        if(findClient == null){
+            System.out.println("Khách hàng không tồn tại!");
+            return;
+        }
+
+        findClient.addPet(findPet);
+        if(Main.petManagement.delete(petId)){
+            System.out.println("Bán thú cưng thành công!");
+        }else{
+            System.out.println("Không tìm thấy thú cưng!");
+        }
+    }
+}
