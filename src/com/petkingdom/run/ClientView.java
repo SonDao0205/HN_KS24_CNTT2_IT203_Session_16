@@ -48,7 +48,7 @@ public class ClientView {
         String name;
         do {
             System.out.print("Nhập tên : ");
-            name = sc.nextLine();
+            name = InputValidate.getString(sc);
             if(name == null){
                 System.out.println("Tên không hợp lệ!Nhập lại!");
             }
@@ -57,7 +57,7 @@ public class ClientView {
         String phoneNumber;
         do {
             System.out.print("Nhập số điện thoại : ");
-            phoneNumber = sc.nextLine();
+            phoneNumber = InputValidate.getString(sc);
             if(phoneNumber == null){
                 System.out.println("Số điện thoại không hợp lệ!Nhập lại!");
             }

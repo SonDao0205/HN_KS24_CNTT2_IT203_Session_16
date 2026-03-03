@@ -20,10 +20,6 @@ public class Client {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -73,7 +69,8 @@ public class Client {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id,phoneNumber);
+//        return Objects.hash(id,phoneNumber);
+        return 1;
     }
 
     @Override

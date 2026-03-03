@@ -17,7 +17,11 @@ public class PetManagement implements IManagement<Pet> {
     public boolean add(Pet item) {
         Pet findPet = findById(item.getId());
         if(findPet == null){
-            return pets.add(item);
+            boolean isAdded = pets.add(item);
+            if(isAdded){
+                HistoryManagement.pushAction("Vừa thêm thú cưng: " + item.getName());
+            }
+            return isAdded;
         }
         return false;
     }
@@ -46,6 +50,7 @@ public class PetManagement implements IManagement<Pet> {
         for(Pet item : pets){
             if(item.getId().equals(petId)){
                 pets.remove(item);
+                HistoryManagement.pushAction("Vừa xóa thú cưng: " + item.getName());
                 return true;
             }
         }

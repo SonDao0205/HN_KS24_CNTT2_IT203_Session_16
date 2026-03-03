@@ -1,6 +1,7 @@
 package com.petkingdom.run;
 
 import com.petkingdom.business.ClientManagement;
+import com.petkingdom.business.HistoryManagement;
 import com.petkingdom.business.PetManagement;
 import com.petkingdom.business.ServiceManagement;
 import com.petkingdom.model.Client;
@@ -12,6 +13,7 @@ public class Main {
     public static PetManagement petManagement = new PetManagement();
     public static ServiceManagement serviceManagement = new ServiceManagement();
     public static ClientManagement clientManagement = new ClientManagement();
+    public static HistoryManagement historyManagement = new HistoryManagement();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         run(sc);
