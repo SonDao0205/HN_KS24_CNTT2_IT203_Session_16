@@ -22,7 +22,6 @@ public class PetManagement implements IManagement<Pet> {
         return false;
     }
 
-    @Override
     public void displayAll() {
         System.out.println("+----------------------+");
         System.out.printf("|%-5s|%-10s|%-5s|\n","ID","Name","Type");
@@ -43,7 +42,6 @@ public class PetManagement implements IManagement<Pet> {
         return null;
     }
 
-    @Override
     public boolean delete(String petId) {
         for(Pet item : pets){
             if(item.getId().equals(petId)){

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class ClientManagement{
+public class ClientManagement {
     public static Set<Client> clients = new LinkedHashSet<>();
 
     public static boolean isEmpty(){
