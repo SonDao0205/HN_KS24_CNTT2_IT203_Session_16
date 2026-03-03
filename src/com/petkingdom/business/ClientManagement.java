@@ -20,8 +20,10 @@ public class ClientManagement implements IManagement<Client> {
         boolean isAdded = clients.add(item);
         if(isAdded) {
             HistoryManagement.pushAction("Vừa thêm khách hàng: " + item.getName());
+            return isAdded;
+        }else{
+            return false;
         }
-        return isAdded;
     }
 
     @Override

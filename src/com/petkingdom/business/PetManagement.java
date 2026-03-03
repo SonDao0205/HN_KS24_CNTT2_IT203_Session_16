@@ -20,8 +20,10 @@ public class PetManagement implements IManagement<Pet> {
             boolean isAdded = pets.add(item);
             if(isAdded){
                 HistoryManagement.pushAction("Vừa thêm thú cưng: " + item.getName());
+                return isAdded;
+            }else{
+                return false;
             }
-            return isAdded;
         }
         return false;
     }
@@ -47,12 +49,11 @@ public class PetManagement implements IManagement<Pet> {
     }
 
     public boolean delete(String petId) {
-        for(Pet item : pets){
-            if(item.getId().equals(petId)){
-                pets.remove(item);
-                HistoryManagement.pushAction("Vừa xóa thú cưng: " + item.getName());
-                return true;
-            }
+        Pet findPet = findById(petId);
+        if(findPet != null){
+            pets.remove(findPet);
+            HistoryManagement.pushAction("Vừa bán thú cưng: " + findPet.getName());
+            return true;
         }
         return false;
     }

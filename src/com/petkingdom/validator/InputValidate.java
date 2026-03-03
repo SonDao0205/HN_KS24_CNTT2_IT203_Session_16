@@ -8,7 +8,6 @@ public class InputValidate {
         if(input.trim().isEmpty()){
             return null;
         }
-        return input;
-
+        return input.trim();
     }
 }
