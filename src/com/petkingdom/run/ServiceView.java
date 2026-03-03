@@ -50,7 +50,7 @@ public class ServiceView {
 
         }while(userId == null);
 
-        Client findClient = ClientManagement.findById(userId);
+        Client findClient = Main.clientManagement.findById(userId);
         if(findClient == null){
             System.out.println("Không tìm thấy khách hàng!");
             return;

@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static PetManagement petManagement = new PetManagement();
     public static ServiceManagement serviceManagement = new ServiceManagement();
+    public static ClientManagement clientManagement = new ClientManagement();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         run(sc);
@@ -29,9 +30,10 @@ public class Main {
         Client c2 = new Client("C002", "Le Thi B", "0988888888");
         c2.addPet(new Pet("P003", "LuLu", "Dog"));
         Client c3 = new Client("C003", "Tran Van C", "0912333444");
-        ClientManagement.register(c1);
-        ClientManagement.register(c2);
-        ClientManagement.register(c3);
+        clientManagement.add(c1);
+        clientManagement.add(c2);
+        clientManagement.add(c2);
+        clientManagement.add(c3);
         Pet p1 = new Pet("P001", "KiKi", "Dog");
         Pet p2 = new Pet("P002", "Mimi", "Cat");
         Pet p3 = new Pet("P003", "LuLu", "Dog");

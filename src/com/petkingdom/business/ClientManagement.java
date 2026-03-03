@@ -3,22 +3,25 @@ package com.petkingdom.business;
 import com.petkingdom.model.Client;
 import com.petkingdom.model.Pet;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class ClientManagement {
+public class ClientManagement implements IManagement<Client> {
     public static Set<Client> clients = new LinkedHashSet<>();
 
     public static boolean isEmpty(){
         return clients.isEmpty();
     }
 
-    public static boolean register(Client client) {
-        return clients.add(client);
+    @Override
+    public boolean add(Client item) {
+        return clients.add(item);
     }
 
-    public static Client findById(String id){
+    @Override
+    public Client findById(String id){
         for(Client c : clients){
             if(c.getId().equals(id)){
                 return c;

@@ -151,7 +151,7 @@ public class PetView {
             }
         }while(userId == null);
 
-        Client findClient = ClientManagement.findById(userId);
+        Client findClient = Main.clientManagement.findById(userId);
         if(findClient == null){
             System.out.println("Khách hàng không tồn tại!");
             return;

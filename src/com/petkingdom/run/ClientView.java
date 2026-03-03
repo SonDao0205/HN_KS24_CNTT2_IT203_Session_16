@@ -63,7 +63,7 @@ public class ClientView {
             }
         }while(phoneNumber == null);
 
-        if(!ClientManagement.register(new Client(id, name,phoneNumber))){
+        if(!Main.clientManagement.add(new Client(id, name,phoneNumber))){
             System.out.println("Id hoặc số điện thoại đã tồn tại! Đăng ký thất bại");
         }else{
             System.out.println("Đăng ký thành công!");
@@ -84,7 +84,7 @@ public class ClientView {
             }
         }while(id == null);
 
-        Client findClient = ClientManagement.findById(id);
+        Client findClient = Main.clientManagement.findById(id);
         if(findClient == null){
             System.out.println("Khách hàng không tồn tại!");
         }else{
