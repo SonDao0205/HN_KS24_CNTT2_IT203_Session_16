@@ -77,20 +77,16 @@ public class Main {
         }
 
 //        4. Thống kê số lượng sản phẩm theo từng loại
-        int electronicCount = 0;
-        int foodCount = 0;
-
+        Map<String,Integer> countMap = new LinkedHashMap<>();
+        countMap.put("electronic", 0);
+        countMap.put("food", 0);
         for (Product product : productRepository.findAll()) {
             if (product instanceof ElectronicProduct) {
-                electronicCount++;
+                countMap.put("electronic", countMap.get("electronic") + 1);
             } else if (product instanceof FoodProduct) {
-                foodCount++;
+                countMap.put("food", countMap.get("food") + 1);
             }
         }
-
-        Map<String,Integer> countMap = new HashMap<>();
-        countMap.put("electronic", electronicCount);
-        countMap.put("food", foodCount);
 
         System.out.println(countMap);
     }
